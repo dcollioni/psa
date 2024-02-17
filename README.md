@@ -32,3 +32,5 @@ _“A Health Care Informed customer needs to be able to_ **_find patient visit i
 **Next:** 
 
 * When you’re done, **send us a link to the Github project and the Azure link / Loom** to vinny.lawlor@hci.care - it will be reviewed by engineering and the CTO within 2 days.
+
+## Solution
