@@ -14,5 +14,18 @@ public class PatientsService : IPatientsService
         _repository = repository;
     }
 
-    // Define your patient search logic here based on the interface method definition
+    public ICollection<PatientEntity> FindAll()
+    {
+        return _repository.FindAll();
+    }
+
+    public PatientEntity? FindOne(Guid patientId)
+    {
+       return _repository.FindOne(patientId);
+    }
+
+    public ICollection<VisitEntity> FindVisitsByPatient(Guid patientId)
+    {
+        return _repository.FindVisitsByPatient(patientId);
+    }
 }

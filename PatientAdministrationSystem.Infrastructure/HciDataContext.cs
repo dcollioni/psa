@@ -1,5 +1,6 @@
 ﻿using PatientAdministrationSystem.Application.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace PatientAdministrationSystem.Infrastructure;
 
