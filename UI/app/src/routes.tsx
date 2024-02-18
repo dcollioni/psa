@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './components/app/App'
-import Home from './components/home/Home'
-import PatientList from './components/patients/PatientList'
-import VisitList from './components/visits/VisitList'
+import Home from './components/pages/home/Home'
+import PatientList from './components/pages/patients/PatientList'
+import VisitList from './components/pages/visits/VisitList'
 
 const routes = (
   <BrowserRouter>

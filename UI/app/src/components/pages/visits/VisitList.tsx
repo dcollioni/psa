@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import styles from './VisitList.module.scss'
+import listStyles from './../../common/list/List.module.scss'
 import { Navigate, useParams } from 'react-router-dom'
-import { Patient } from '../patients/PatientList'
-
-export interface Visit {
-  id: string
-  date: string
-}
+import { Patient } from '../../../entities/Patient'
+import { Visit } from '../../../entities/Visit'
 
 const VisitList = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -46,11 +42,11 @@ const VisitList = () => {
   return (
     <div className="visitList">
       <h2>Visits {patient && `(${patient.firstName} ${patient.lastName})`}</h2>
-      <div className={styles.list}>
+      <div className={listStyles.list}>
         {isLoading && <>Loading...</>}
         {!isLoading && visits.length === 0 && <>No visits found</>}
         {visits.map(v => (
-          <div className={styles.item} key={v.id}>
+          <div className={listStyles.item} key={v.id}>
             <span>{`${new Date(v.date).toLocaleString()}`}</span>
           </div>
         ))}
