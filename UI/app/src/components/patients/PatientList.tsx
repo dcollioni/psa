@@ -10,7 +10,7 @@ export interface Patient {
 }
 
 const PatientList = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [patients, setPatients] = useState<Patient[]>([])
 
   useEffect(() => {
@@ -18,17 +18,17 @@ const PatientList = () => {
       setIsLoading(true)
       try {
         const res = await fetch('http://localhost:5272/api/patients/')
-        const patients: Patient[] = await res.json()
-        setPatients(patients)
+        if (res.ok) {
+          const patients: Patient[] = await res.json()
+          setPatients(patients)
+        }
       } catch (e) {
         console.log(e)
       } finally {
         setIsLoading(false)
       }
     }
-    if (!isLoading) {
-      loadPatients()
-    }
+    loadPatients()
   }, [])
 
   return (
