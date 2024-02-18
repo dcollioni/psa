@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './PatientList.module.scss'
 import { Link } from 'react-router-dom'
-
-export interface Patient {
-  id: string
-  firstName: string
-  lastName: string
-  email: string
-}
+import { Patient } from '../../../entities/Patient'
+import listStyles from '../../common/list/List.module.scss'
 
 const PatientList = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -47,16 +42,16 @@ const PatientList = () => {
           onChange={e => setSearch(e.target.value)}
         />
       </div>
-      <div className={styles.list}>
-        {isLoading && <>Loading...</>}
-        {!isLoading && patients.length === 0 && <>No patients found</>}
+      <div className={listStyles.list}>
         {patients.map(p => (
-          <div className={styles.item} key={p.id}>
+          <div className={listStyles.item} key={p.id}>
             <span>{`${p.firstName} ${p.lastName} (${p.email})`}</span>
             <Link to={`/patients/${p.id}/visits`}>See visits</Link>
           </div>
         ))}
       </div>
+      {!isLoading && patients.length === 0 && <>No patients found</>}
+      {isLoading && <>Loading...</>}
     </div>
   )
 }
