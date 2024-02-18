@@ -1,3 +1,16 @@
 .title {
   text-align: center;
 }
+
+.nav {
+  text-align: center;
+
+  > a {
+    font-weight: bold;
+    margin-right: 20px;
+  }
+}
+
+.content {
+  margin: 20px;
+}
