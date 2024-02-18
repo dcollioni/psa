@@ -14,9 +14,9 @@ public class PatientsService : IPatientsService
         _repository = repository;
     }
 
-    public ICollection<PatientEntity> FindAll()
+    public ICollection<PatientEntity> FindAll(string? search)
     {
-        return _repository.FindAll();
+        return _repository.FindAll(search);
     }
 
     public PatientEntity? FindOne(Guid patientId)
