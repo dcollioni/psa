@@ -6,7 +6,7 @@ function App({ children }: { children: React.JSX.Element }) {
   return (
     <div className="app">
       <header>
-        <h1 className={styles.title}>PSA - Douglas Collioni</h1>
+        <h1 className={styles.title}>PSA</h1>
       </header>
       <nav className={styles.nav}>
         <Link to={'/'}>Home</Link>

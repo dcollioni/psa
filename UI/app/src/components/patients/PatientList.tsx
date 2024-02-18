@@ -10,7 +10,7 @@ export interface Patient {
 }
 
 const PatientList = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [patients, setPatients] = useState<Patient[]>([])
   const [search, setSearch] = useState<string>('')
 
