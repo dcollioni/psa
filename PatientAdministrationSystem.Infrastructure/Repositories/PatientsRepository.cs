@@ -14,9 +14,20 @@ public class PatientsRepository : IPatientsRepository
         _context = context;
     }
 
-    public ICollection<PatientEntity> FindAll()
+    public ICollection<PatientEntity> FindAll(string? search)
     {
-        return _context.Patients.ToList();
+        if (search == null)
+        {
+            return _context.Patients.OrderBy(p => p.FirstName).ThenBy(p => p.LastName).ToList();
+        }
+        else
+        {
+            return _context.Patients.Where(p =>
+                p.FirstName.Contains(search, StringComparison.InvariantCultureIgnoreCase) ||
+                p.LastName.Contains(search, StringComparison.InvariantCultureIgnoreCase) ||
+                p.Email.Contains(search, StringComparison.InvariantCultureIgnoreCase)
+            ).OrderBy(p => p.FirstName).ThenBy(p => p.LastName).ToList();
+        }
     }
 
     public PatientEntity? FindOne(Guid patientId)
@@ -34,6 +45,6 @@ public class PatientsRepository : IPatientsRepository
             throw new Exception("patient not found");
         }
 
-        return patient.PatientHospitals?.Select(h => new VisitEntity { Id = h.VisitId, Date = h.Visit.Date }).ToList() ?? new List<VisitEntity>();
+        return patient.PatientHospitals?.Select(h => new VisitEntity { Id = h.VisitId, Date = h.Visit.Date }).OrderBy(p => p.Date).ToList() ?? new List<VisitEntity>();
     }
 }

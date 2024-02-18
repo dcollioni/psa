@@ -18,9 +18,9 @@ public class PatientsController : ControllerBase
     }
 
     [HttpGet]
-    public ICollection<PatientEntity> Get()
+    public ICollection<PatientEntity> GetAll(string? search)
     {
-        return _patientsService.FindAll();
+        return _patientsService.FindAll(search);
     }
 
     [HttpGet("{patientId}")]

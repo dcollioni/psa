@@ -87,9 +87,16 @@ using (var serviceScope = app.Services.CreateScope())
                 PatientId = new Guid("c00b9ff3-b1b6-42fe-8b5a-4c28408fb64a"),
                 HospitalId = new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"),
                 VisitId = new Guid("a7a5182a-995c-4bce-bce0-6038be112b7b")
+            },
+            new()
+            {
+                PatientId = new Guid("c00b9ff3-b1b6-42fe-8b5a-4c28408fb64a"),
+                HospitalId = new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"),
+                VisitId = new Guid("cb404957-c1c1-408a-85b5-681b8965ff6e")
             }
         }
     });
+
     dbContext.Patients.Add(
         new PatientEntity
         {
@@ -99,11 +106,82 @@ using (var serviceScope = app.Services.CreateScope())
             Email = "vinny.lawlor@hci.care"
         });
 
+    dbContext.Patients.Add(
+        new PatientEntity
+        {
+            Id = new Guid("00832d98-b3e2-4f61-a275-b9ded361dc19"),
+            FirstName = "Douglas",
+            LastName = "Collioni",
+            Email = "dcollioni@gmail.com",
+            PatientHospitals = new List<PatientHospitalRelation>
+        {
+            new()
+            {
+                PatientId = new Guid("00832d98-b3e2-4f61-a275-b9ded361dc19"),
+                HospitalId = new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"),
+                VisitId = new Guid("2a15cd33-4ac9-4b46-8325-47920a8dc3f3")
+            },
+            new()
+            {
+                PatientId = new Guid("00832d98-b3e2-4f61-a275-b9ded361dc19"),
+                HospitalId = new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"),
+                VisitId = new Guid("a3f9c0b9-b9ab-49c8-a5e9-cbb4625debae")
+            },
+            new()
+            {
+                PatientId = new Guid("00832d98-b3e2-4f61-a275-b9ded361dc19"),
+                HospitalId = new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"),
+                VisitId = new Guid("cb3d8b41-8868-45e4-be1c-a3a5ca6c7161")
+            },
+            new()
+            {
+                PatientId = new Guid("00832d98-b3e2-4f61-a275-b9ded361dc19"),
+                HospitalId = new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"),
+                VisitId = new Guid("0f7a028d-5b94-4f0d-a6e3-3c555ed1b521")
+            }
+        }
+        });
+
     dbContext.Visits.Add(
         new VisitEntity
         {
             Id = new Guid("a7a5182a-995c-4bce-bce0-6038be112b7b"),
             Date = new DateTime(2023, 08, 22)
+        });
+
+    dbContext.Visits.Add(
+        new VisitEntity
+        {
+            Id = new Guid("cb404957-c1c1-408a-85b5-681b8965ff6e"),
+            Date = new DateTime(2023, 08, 15)
+        });
+
+    dbContext.Visits.Add(
+        new VisitEntity
+        {
+            Id = new Guid("2a15cd33-4ac9-4b46-8325-47920a8dc3f3"),
+            Date = new DateTime(2023, 09, 03)
+        });
+
+    dbContext.Visits.Add(
+        new VisitEntity
+        {
+            Id = new Guid("a3f9c0b9-b9ab-49c8-a5e9-cbb4625debae"),
+            Date = new DateTime(2023, 09, 07)
+        });
+
+    dbContext.Visits.Add(
+        new VisitEntity
+        {
+            Id = new Guid("cb3d8b41-8868-45e4-be1c-a3a5ca6c7161"),
+            Date = new DateTime(2023, 10, 12)
+        });
+
+    dbContext.Visits.Add(
+        new VisitEntity
+        {
+            Id = new Guid("0f7a028d-5b94-4f0d-a6e3-3c555ed1b521"),
+            Date = new DateTime(2023, 10, 29)
         });
 
 

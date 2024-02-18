@@ -12,12 +12,14 @@ export interface Patient {
 const PatientList = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [patients, setPatients] = useState<Patient[]>([])
+  const [search, setSearch] = useState<string>('')
 
   useEffect(() => {
     const loadPatients = async () => {
       setIsLoading(true)
       try {
-        const res = await fetch('http://localhost:5272/api/patients/')
+        // could implement a debounce here
+        const res = await fetch(`http://localhost:5272/api/patients?search=${search}`)
         if (res.ok) {
           const patients: Patient[] = await res.json()
           setPatients(patients)
@@ -29,11 +31,22 @@ const PatientList = () => {
       }
     }
     loadPatients()
-  }, [])
+  }, [search])
 
   return (
     <div className="patientList">
       <h2>Patients</h2>
+      <div className={styles.search}>
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search patients by name and email"
+          autoFocus
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+      </div>
       <div className={styles.list}>
         {isLoading && <>Loading...</>}
         {!isLoading && patients.length === 0 && <>No patients found</>}
